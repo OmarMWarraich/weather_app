@@ -3,16 +3,18 @@ import React from "react";
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 
 const CurrentWeather = () => {
+  const { wrapper, container, temp, feels, highLowWrapper, highLow } = styles;
+
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
+    <SafeAreaView style={wrapper}>
+      <View style={container}>
         <Feather name="sun" size={100} color="black" />
         <Text>Current Weather</Text>
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
-        <View style={styles.highLowWrapper}>
-          <Text style={styles.highLow}>High: 8</Text>
-          <Text style={styles.highLow}>Low: 6</Text>
+        <Text style={temp}>6</Text>
+        <Text style={feels}>Feels like 5</Text>
+        <View style={highLowWrapper}>
+          <Text style={highLow}>High: 8</Text>
+          <Text style={highLow}>Low: 6</Text>
         </View>
       </View>
       <View style={styles.bodyWrapper}>
