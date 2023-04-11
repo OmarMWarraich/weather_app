@@ -1,9 +1,21 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, StatusBar } from "react-native";
+
+import RowText from "../components/RowText";
 
 const CurrentWeather = () => {
-  const { wrapper, container, temp, feels, highLowWrapper, highLow } = styles;
+  const {
+    wrapper,
+    container,
+    temp,
+    feels,
+    highLowWrapper,
+    highLow,
+    bodyWrapper,
+    description,
+    message,
+  } = styles;
 
   return (
     <SafeAreaView style={wrapper}>
@@ -12,15 +24,21 @@ const CurrentWeather = () => {
         <Text>Current Weather</Text>
         <Text style={temp}>6</Text>
         <Text style={feels}>Feels like 5</Text>
-        <View style={highLowWrapper}>
-          <Text style={highLow}>High: 8</Text>
-          <Text style={highLow}>Low: 6</Text>
-        </View>
+        <RowText
+          messageOne="High: 8"
+          messageTwo="Low: 6"
+          containerStyles={highLowWrapper}
+          messageOneStyles={highLow}
+          messageTwoStyles={highLow}
+        />
       </View>
-      <View style={styles.bodyWrapper}>
-        <Text style={styles.description}>It's sunny</Text>
-        <Text style={styles.message}>it's perfect t-shirt weather</Text>
-      </View>
+      <RowText
+        messageOne="Wind: 10km/h"
+        messageTwo="Humidity: 80%"
+        containerStyles={bodyWrapper}
+        messageOneStyles={description}
+        messageTwoStyles={message}
+      />
     </SafeAreaView>
   );
 };
@@ -29,6 +47,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: "pink",
+    marginTop: StatusBar.currentHeight || 0,
   },
   container: {
     flex: 1,
