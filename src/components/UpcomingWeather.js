@@ -7,6 +7,7 @@ import {
   FlatList,
   View,
   StatusBar,
+  ImageBackground,
 } from "react-native";
 
 const DATA = [
@@ -49,6 +50,7 @@ const DATA = [
 ];
 
 const Item = (props) => {
+  // eslint-disable-next-line no-unused-vars
   const { dt_txt, min, max, condition } = props;
 
   return (
@@ -73,12 +75,17 @@ const UpcomingWeather = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Upcoming Weather</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.dt_txt}
-      />
+      <ImageBackground
+        source={require("../../assets/upcoming_bg.jpg")}
+        style={styles.image}
+      >
+        <Text>Upcoming Weather</Text>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.dt_txt}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -86,7 +93,7 @@ const UpcomingWeather = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "royalBlue",
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
@@ -106,6 +113,9 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 15,
     color: "white",
+  },
+  image: {
+    flex: 1,
   },
 });
 
